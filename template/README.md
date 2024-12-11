@@ -11,7 +11,7 @@ YourAppRoot/
 |      └── yourapp.svg // Your app icon, shows up on the client
 ├── server/
 |   └── index.ts // The main file of the backend
-|   src/
+├── src/
 |   ├── App.tsx // React client UI
 |   ├── index.css
 |   └── main.tsx
