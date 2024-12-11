@@ -65,4 +65,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 # How to use
 
-I have made a [wiki](https://github.com/RandomDebugGuy/DeskThing-apps-wiki/wiki)! Go check it out to see how to get started!
+I have made a [wiki](https://github.com/RandomDebugGuy/DeskThing-apps-wiki/)! Go check it out to see how to get started!
