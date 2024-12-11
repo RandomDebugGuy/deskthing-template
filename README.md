@@ -50,10 +50,10 @@ YourAppRoot/
 
 ## Customizing the Template
 
-1. Update the `package.json` or `/public/manifest.json` files with your project details if they change
-2. Modify the `index.html` file to change the app title and meta information
-3. Start building your React components in the `src/components/` directory
-4. Customize your server in `server/index.ts`
+You can customize this template by:
+- modifying the React frontend in src/
+- modifying the backend template in server/
+- changing your app information in public/manifest.json
 
 ## Contributing
 
