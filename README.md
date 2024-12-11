@@ -28,13 +28,24 @@ This template provides a starting point for creating an app for the DeskThingSer
 
 ## Project Structure
 
-- `src/`: Contains the React application source code. This is the webpage
-- `public/`: Static assets and HTML template. This includes your manifest.json
-- `server/`: Your backend code that runs the core of your app
+```
+YourAppRoot/
+├── public/
+|   ├── manifest.json // Your app info
+|   └── icons
+|      └── yourapp.svg // Your app icon, shows up on the client
+├── server/
+|   └── index.ts // The main file of the backend
+├── src/
+|   ├── App.tsx // React client UI
+|   ├── index.css
+|   └── main.tsx
+└── index.html
+```
 
 ## Available Scripts
 
-- `npm run dev`: Starts the development server
+- `npm run dev`: Starts the vite development server
 - `npm run build`: Builds the app into /dist where you can zip the files and load them into the DeskThingServer
 
 ## Customizing the Template
