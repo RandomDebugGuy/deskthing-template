@@ -8,23 +8,21 @@ const App: React.FC = () => {
     useEffect(() => {
         const onAppData = async (data: SocketData) => {
             console.log('Received data from the server!')
-            console.log(data.payload)
         }
-        // This listener will listen for your app's ID and trigger the onAppData whenever it receives data from your server.
-        // On the server, run DeskThing.sendDataToClient({type: 'someType', payload: {someData: 'someData'}}) 
-        // Then here, the data passed will be {app: 'yourAppID', payload: {someData: 'someData'}, type: 'someType'}
-        const removeListener = deskthing.on('yourAppID', onAppData)
+        
+        const myListener = deskthing.on('myAppID', onAppData)
 
         return () => {
-            removeListener()
+            //Call the listener to remove it
+            myListener()
         }
     })
 
     return (
         <div className="bg-slate-800 w-screen h-screen flex justify-center items-center">
-            <p className="font-bold text-5xl text-white">DeskThing App</p>
+            <p className="font-bold text-5xl text-white">My DeskThing app</p>
+            <p className="font-bold text-4xl text-white">Change this in yourProjectRoot/src/App.tsx</p>
         </div>
-
     )
 }
 
