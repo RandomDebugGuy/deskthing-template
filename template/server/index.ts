@@ -3,61 +3,44 @@ import { DeskThing as DK } from 'deskthing-server';
 const DeskThing = DK.getInstance();
 export { DeskThing }
 
-// End of required code
+async function start() {
 
-// This is triggered at the end of this file with the on('start') listener. It runs when the DeskThing starts your app. It serves as the entrypoint for your app
-const start = async () => {
-
-    // This is just one of the ways of synchronizing your data with the server. It waits for the server to have more data and saves it to the Data object here.
+    // One of many ways to sync data from the server
     let Data = await DeskThing.getData()
-    DeskThing.on('data', (newData) => {
-        // Syncs the data with the server
-        Data = newData
-        DeskThing.sendLog('New data received!' + Data)
-    })
 
-    // Template Items
-
-    // This is how to add settings. You need to pass the "settings" object to the AddSettings() function
+    // An example on how to add settings
     if (!Data?.settings?.theme) {
         DeskThing.addSettings({
-          "theme": { label: "Theme Choice", value: 'dark', options: [{ label: 'Dark Theme', value: 'dark' }, { label: 'Light Theme', value: 'light' }] },
-        })
-
-        // This will make Data.settings.theme.value equal whatever the user selects
-      }
-
-    // Getting data from the user (Ensure these match)
-    if (!Data?.user_input || !Data?.second_user_input) {
-        const requestScopes = {
-          'user_input': {
-            'value': '',
-            'label': 'Placeholder User Data',
-            'instructions': 'You can make the instructions whatever you want. You can also include HTML inline styling like <a href="https://deskthing.app/" target="_blank" style="color: lightblue;">Making Clickable Links</a>.',
+          "theme": { 
+              label: "Theme Choice", 
+              value: 'dark', 
+              options: [
+                  { 
+                      label: 'Dark Theme', 
+                      value: 'dark' 
+                  }, 
+                  { 
+                      label: 'Light Theme', 
+                      value: 'light' 
+                  }
+              ] 
           },
-          'second_user_input': {
-            'value': 'Prefilled Data',
-            'label': 'Second Option',
-            'instructions': 'Scopes can include as many options as needed',
-          }
-        }
-    
-        DeskThing.getUserInput(requestScopes, async (data) => {
-          if (data.payload.user_input && data.payload.second_user_input) {
-            // You can either save the returned data to your data object or do something with it
-            DeskThing.saveData(data.payload)
-          } else {
-            DeskThing.sendError('Please fill out all the fields! Restart to try again')
-          }
         })
-      } else {
-        DeskThing.sendLog('Data Exists!')
-        // This will be called is the data already exists in the server
       }
+
+    // DO NOT use setInterval() to create a loop. Instead use addBackgroundTaskLoop()
+    const myLoop = DeskThing.addBackgroundTaskLoop(async () => { // having an asynchronous function is required
+      await new Promise(resolve => setTimeout(resolve, 5000));
+      console.log('Executing background task!');
+      return false; // Return false to continue the loop, true to stop it
+    })
+    
+    // Call the loop to stop it
+    myLoop()
 } 
 
-const stop = async () => {
-    // Function called when the server is stopped
+async function stop() {
+    // Function called when the server is stopped. Use this for process cleanup if you have a complex app.
 }
 
 // Main Entrypoint of the server
