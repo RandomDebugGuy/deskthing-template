@@ -54,8 +54,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 # How to use
 
-For instructions on setting up and running the client (webpage), refer to the deskthing-client tool
-https://github.com/ItsRiprod/deskthing-app-client
-
-For instructions on setting up and running the server, refer to the deskthing-server tool
-https://github.com/ItsRiprod/deskthing-app-server
+I have made a [wiki](https://github.com/RandomDebugGuy/DeskThing-apps-wiki/wiki)! Go check it out to see how to get started!
